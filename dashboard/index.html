@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols priced by their tokenized peers</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-in">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="20" r="10.5" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".55"/><circle cx="20" cy="20" r="4" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".35"/><path d="M20 20 L31 9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="27.5" cy="12.5" r="2.6" fill="currentColor"/></svg>
+      <div>
+        <h1>Token Radar</h1>
+        <p class="tagline">Pre-token protocols, priced by the peers that already trade.</p>
+      </div>
+    </div>
+    <div class="masthead-meta" id="masthead-meta"></div>
+  </div>
+</header>
+
+<main>
+  <section class="stats" id="stats" aria-label="Board summary"></section>
+
+  <section class="controls" aria-label="Board controls">
+    <label class="ctl ctl-search">
+      <span>Search</span>
+      <input id="q" type="search" placeholder="Protocol or slug…" autocomplete="off">
+    </label>
+    <label class="ctl">
+      <span>Category</span>
+      <select id="f-category"></select>
+    </label>
+    <label class="ctl">
+      <span>Chain</span>
+      <select id="f-chain"></select>
+    </label>
+    <label class="ctl">
+      <span>Sort by</span>
+      <select id="f-sort">
+        <option value="rank">Rank</option>
+        <option value="implied">Implied value</option>
+        <option value="tvl">TVL</option>
+        <option value="change">7d change</option>
+        <option value="age">Age</option>
+        <option value="multiple">Category multiple</option>
+      </select>
+    </label>
+    <button class="ctl-btn" id="f-dir" type="button" title="Toggle sort direction">↓ Desc</button>
+    <label class="ctl-check">
+      <input id="f-watch" type="checkbox">
+      <span>Watchlist only</span>
+    </label>
+    <span class="ctl-count" id="row-count"></span>
+  </section>
+
+  <section class="board-wrap">
+    <table class="board" id="board">
+      <thead>
+        <tr>
+          <th class="num">#</th>
+          <th>Protocol</th>
+          <th>Category</th>
+          <th>Chains</th>
+          <th class="num">TVL</th>
+          <th class="num">7d</th>
+          <th class="num">Age</th>
+          <th class="num">Implied value</th>
+          <th class="bar-cell">Impl ÷ TVL</th>
+        </tr>
+      </thead>
+      <tbody id="board-body"></tbody>
+    </table>
+    <p class="empty" id="board-empty" hidden>No protocol matches those filters. Loosen the search or clear a filter.</p>
+  </section>
+
+  <section class="model" id="model" aria-label="How the price is made"></section>
+
+  <section class="live" id="live" aria-label="Already trading"></section>
+
+  <footer class="foot" id="foot"></footer>
+</main>
+
+<aside class="detail" id="detail" hidden aria-label="Protocol detail">
+  <div class="detail-in" id="detail-in"></div>
+</aside>
+<div class="scrim" id="scrim" hidden></div>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
